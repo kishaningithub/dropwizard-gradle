@@ -1,5 +1,7 @@
 # Dropwizard + Gradle = &hearts;
 
+[![Build Status](https://travis-ci.org/kishaningithub/dropwizard-gradle.svg?branch=master)](https://travis-ci.org/kishaningithub/dropwizard-gradle)
+
 Minimal example of getting Dropwizard going with Gradle.
 
 # Dropwizard version

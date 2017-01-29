@@ -9,7 +9,7 @@ env:
 jdk:
   - openjdk8
 script:
-  - ./gradlew clean oneJar
+  - ./gradlew oneJar
   - docker build -t kishanb/dropwizard-gradle:1.0.0 .
 after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
