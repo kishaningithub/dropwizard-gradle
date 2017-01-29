@@ -1,0 +1,16 @@
+sudo: false
+language: java
+services:
+  - docker
+env:
+  global:
+    - secure: "O++2OpsIV5FPBp9xSQwecgTnY5E8+e+xhtvruqcseg2NGzcjGbHpZqkqeXl8XhO7wsXyZkrWCEFRBWfEBOjDj1jmqXZ7ye/Lexa4oPt4y/4TZR+h1rH8wjhvdmOFo3R0+F1PLlz1+zXxOP13K5F6+bHZemyHggMFCR0EBpsXe+2p8n/Zyo4Ow3wWR3OnVdprJzanaZ67+0Q19wvjiWfvoSGocrkCV2iCxF3a/Sc9AQ52NeLOZozg0rG8Hfu5mcU6KowhpVkvBai8hk69oahaSFDghzvJLFBW1xv9oFvix52BJEKyMnGkt6FSfQjY0ar33gXRDG78MBR9GpNXsmraIIX0fyhKfZDZLgf9G9Mefo3ahYEWimoKaDddjeCIzkK2S0fL99lngWNNliCqmk2K8wSlKvu5nn8As9zupIcbZP8OvOzIpBEUSNavzqgjvrScHa0EQXozDG0+2DCT1ocrssXab1i0LIGeTTGzTsTyChtiRP3nqC/Lfveqqv+KdbKwCPmBEA/2HboZTWzLQiAs2DwDG3Idr/tbzGftsGsyBGgAApL36nBlbmAStHJPGNDcHigtRtz/oh/9iBhAs2jNvdi1BEWkH20NHHhIpMnnXrpQOvMSdeQXk+mCTJ7fNNs75BlRkUZbZ3nI79tzEWEhAGcyfuxmExb6PKxKK9QfblA="
+    - secure: "H9gDZVo7t+LTBR11knXubgHNdRfTQHCN+Rm+eGK2Kj/7kv+lxXy3NQPkDDGmSLmNJmqMglhyTL0SxlVexEhbGwD2L1kkGdOaEz6K9txKYUwoq1IY3hXzQ238X4vaX3SuimVk1yYW+BQnd/95lVnfVL9Hom6MfzqATJl0avGtLtLN2SPJeqyPKrInwev77hfuQ1ghjmWSzetv8PXn9qkIJN8gheNKGrDUfMckSx0nw1SvOFDOWEly4KGYKPsqaoAYptUN/B5GRs+hzXYRTi8UpiO2IRUGxc7khF2031y7Z5sXhLkIWydsyqZdVh4HvpaREc3NroHuLjf5jT+ByeQxuWUqavRv/1GsnqieXl4VbOeoK6fP4vN2zRISbF1KMjPqTMFZQEsh4gQS5d447oF6f4hGkjTfKQIqASd9fJ3Zugi8hW2ZIouYq0UqDZZsho8s5H669pOf8VrJWkJCC4FYVr57dNo+stWyvtXgswDh3sPV8nAHwKA3902ns1D5MDKQE+VCBvm9klXkUhWod/AjlO26zTQuU/jsUYwO9QnXXflCuSM8HXBAQuFKdq5ybOeNBFz1Kt5HYDBzY0h1xWbPUjb4dcYCRyFELx56mGhuChp75+IMYtu0NOiFKC/1GVMBkiWVPV3LJWelJVST//1oICL90WiX7jKKlhqdSi3I7sg="
+jdk:
+  - openjdk8
+script:
+  - ./gradlew clean oneJar
+  - docker build -t kishanb/dropwizard-gradle:1.0.0 .
+after_success:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker push kishanb/dropwizard-gradle:1.0.0

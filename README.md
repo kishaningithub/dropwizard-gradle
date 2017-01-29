@@ -7,7 +7,7 @@ Minimal example of getting Dropwizard going with Gradle.
 
 # Build
 
-Run `./gradlew oneJar`. The resulting JAR will be saved as `./build/libs/dropwizard-gradle-<<version>>-standalone.jar`.
+Run `./gradlew clean oneJar`. The resulting JAR will be saved as `./build/libs/dropwizard-gradle-<<version>>-standalone.jar`.
 
 This example is using the [Gradle OneJar Plugin](https://github.com/rholder/gradle-one-jar) which will create
 a JAR file of the project including all dependencies, similar to the [Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)
